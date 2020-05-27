@@ -20,7 +20,7 @@ export const getProduct: RequestHandler = async (req, res, next) => {
     }
     res.status(200).json({ message: 'One Product', product: product });
 };
-export const CreateProduct: RequestHandler = async (req, res, next) => {
+export const createProduct: RequestHandler = async (req, res, next) => {
     const title = req.body.title;
     const description = req.body.description;
     const price = req.body.price;

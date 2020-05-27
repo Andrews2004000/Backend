@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 import { RequestHandler, Request, Response, NextFunction } from 'express';
 
-export const Login: RequestHandler = async (req, res, next) => {
+export const login: RequestHandler = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     let loadedUser;
@@ -80,7 +80,7 @@ export const deleteUser: RequestHandler = async (req, res, next) => {
     }
     res.status(200).json({ message: 'Deleted User' });
 };
-export const UpdateUser: RequestHandler = async (req, res, next) => {
+export const updateUser: RequestHandler = async (req, res, next) => {
     User.findByIdAndUpdate(req.user, { $set: req.body }, function (err, result) {
         if (err) {
             console.log(err);
