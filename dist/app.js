@@ -25,8 +25,14 @@ app.use((err, req, res, next) => {
     console.log(err);
     res.status(status).json({ message: message, data: data });
 });
-mongoose_1.default.connect('mongodb+srv://Andrew:Dalida@cluster0-rsstj.mongodb.net/user?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
-    .then(res => {
+mongoose_1.default
+    .connect('mongodb+srv://Andrew:Dalida@cluster0-rsstj.mongodb.net/user?retryWrites=true&w=majority', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+})
+    .then((res) => {
     app.listen(5000);
 });
 //# sourceMappingURL=app.js.map

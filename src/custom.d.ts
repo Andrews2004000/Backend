@@ -1,11 +1,9 @@
-import {IUser} from './modules/Authentication'
+import { IUser } from './models/Authentication';
 
-declare global{
-    namespace Express{
-        export interface Request{
-           user?:IUser
-            
-           
+declare global {
+    namespace Express {
+        export interface Request {
+            user?: IUser;
         }
     }
 }

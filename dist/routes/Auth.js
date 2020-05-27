@@ -22,9 +22,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const AuthController = __importStar(require("../middlewere/Auth"));
+const AuthController = __importStar(require("../controllers/Auth"));
 const express_promise_router_1 = __importDefault(require("express-promise-router"));
-const is_auth_1 = __importDefault(require("../middle/is-auth"));
+const is_auth_1 = __importDefault(require("../middlewares/is-auth"));
 const router = express_promise_router_1.default();
 router.post('/login', AuthController.Login);
 router.patch('/status', AuthController.updateUserStatus);

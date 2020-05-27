@@ -18,17 +18,39 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const ProductsController = __importStar(require("../controllers/Products"));
-const express_promise_router_1 = __importDefault(require("express-promise-router"));
-const router = express_promise_router_1.default();
-router.post('/prod', ProductsController.CreateProduct);
-router.get('/prod:prodId', ProductsController.getProduct);
-router.get('/prod', ProductsController.getProducts);
-router.delete('/prod:prodId', ProductsController.deleteProduct);
-router.patch('/prod:prodId', ProductsController.updateProduct);
-exports.default = router;
+const mongoose = __importStar(require("mongoose"));
+const ProductSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+    },
+    scadenza: {
+        type: String
+    },
+    ratings: {
+        type: String,
+    },
+    MaxQuantity: {
+        type: Number,
+        required: true
+    },
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }
+}, { timestamps: true });
+const Product = mongoose.model('Product', ProductSchema);
+exports.default = Product;
 //# sourceMappingURL=Products.js.map

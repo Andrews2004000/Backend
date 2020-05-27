@@ -1,11 +1,11 @@
-import Products from '../modules/Products';
-import User from '../modules/Authentication';
+import Products from '../models/Products';
+import User from '../models/Authentication';
 import { RequestHandler } from 'express';
 
 export const getProducts: RequestHandler = async (req, res, next) => {
     const products = await Products.find();
     if (!products) {
-        const err:any = new Error('No Products');
+        const err: any = new Error('No Products');
         err.statusCode = 422;
         throw err;
     }
@@ -20,7 +20,7 @@ export const getProduct: RequestHandler = async (req, res, next) => {
     }
     res.status(200).json({ message: 'One Product', product: product });
 };
-export const CreateProduct:RequestHandler = async (req, res, next) => {
+export const CreateProduct: RequestHandler = async (req, res, next) => {
     const title = req.body.title;
     const description = req.body.description;
     const price = req.body.price;
@@ -38,7 +38,7 @@ export const CreateProduct:RequestHandler = async (req, res, next) => {
         MaxQuantity: MaxQuantity,
     });
     await products.save();
-    const user:any = await User.findById(req.user?._id);
+    const user: any = await User.findById(req.user?._id);
     user.product.push(products);
     res.status(200).json({
         message: 'Post Created',
@@ -97,5 +97,3 @@ export const updateProduct: RequestHandler = async (req, res, next) => {
     const results = await product.save();
     res.status(200).json({ message: 'You have Update Your Products', product: results });
 };
-
-

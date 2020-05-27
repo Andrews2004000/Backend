@@ -1,13 +1,11 @@
+import * as AuthController from '../controllers/Auth';
+import ExpressPromiseRouter from 'express-promise-router';
+import isAuth from '../middlewares/is-auth';
+const router = ExpressPromiseRouter();
 
-import * as AuthController from '../middlewere/Auth'
-import ExpressPromiseRouter from 'express-promise-router'
-import isAuth from '../middle/is-auth'
-const router = ExpressPromiseRouter()
-
-router.post('/login',AuthController.Login)
-router.patch('/status',AuthController.updateUserStatus)
-router.put('/signup',AuthController.signUp)
-router.delete('/user',AuthController.deleteUser)
-router.patch('/user',isAuth,AuthController.restrictTo('admin'),AuthController.UpdateUser)
-export default router
-
+router.post('/login', AuthController.Login);
+router.patch('/status', AuthController.updateUserStatus);
+router.put('/signup', AuthController.signUp);
+router.delete('/user', AuthController.deleteUser);
+router.patch('/user', isAuth, AuthController.restrictTo('admin'), AuthController.UpdateUser);
+export default router;
